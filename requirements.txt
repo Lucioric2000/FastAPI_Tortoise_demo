@@ -1,2 +1,5 @@
 fastapi
 uvicorn
+sentry-sdk[fastapi]
+tortoise-orm[asyncpg]
+python-dotenv
