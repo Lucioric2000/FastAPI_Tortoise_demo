@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from tortoise import fields
-from tortoise.models import Model, BaseModel
+from tortoise.models import Model
 
 
 app = FastAPI()
@@ -15,12 +15,14 @@ class Customer(Model):
     beneficiaries = fields.ReverseRelation["Beneficiary"]
     claims = fields.ReverseRelation["Claim"]
 
+
 # Applications Table
 class Application(Model):
     id = fields.IntField(pk=True)
     status = fields.CharField(max_length=50)
     customer = fields.ForeignKeyField('models.Customer', related_name='applications')
     policy = fields.OneToOneField('models.Policy', related_name='application', null=True)
+
 
 # Policies Table
 class Policy(Model):
@@ -51,8 +53,10 @@ class Claim(Model):
     customer = fields.ForeignKeyField('models.Customer', related_name='claims')
 
 
+"""
 class Policy(BaseModel):
     application_id: str
     policy_start_date: str
     policy_end_date: str
+"""
 
