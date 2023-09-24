@@ -1,7 +1,6 @@
 from tortoise import fields
 from tortoise.models import Model
 from tortoise.contrib.pydantic import pydantic_model_creator
-from pydantic import BaseModel
 
 
 # Customers Table
